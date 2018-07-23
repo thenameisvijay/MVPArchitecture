@@ -1,20 +1,27 @@
 package com.android.vj.mvparchitecture.Utils;
 
+import android.app.AlertDialog;
 import android.content.Context;
-import android.support.v4.widget.ContentLoadingProgressBar;
+import android.view.LayoutInflater;
+import android.view.View;
 
-class CommonUtil {
-    public static ContentLoadingProgressBar contentLoadingProgressBar;
+import com.android.vj.mvparchitecture.R;
 
-    public static void showProgressBar(Context context) {
-        contentLoadingProgressBar = new ContentLoadingProgressBar(context);
-        /*contentLoadingProgressBar.setActivated(true);
-        contentLoadingProgressBar.setIndeterminate(true);
-        contentLoadingProgressBar.onAttachedToWindow();*/
-        contentLoadingProgressBar.show();
+public class CommonUtil {
+    private static AlertDialog alertDialog;
+
+    public static void showProgressBar(Context context, boolean isCancellable) {
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context);
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        assert inflater != null;
+        View dialogView = inflater.inflate(R.layout.progress_dialog_layout, null);
+        dialogBuilder.setView(dialogView);
+        dialogBuilder.setCancelable(isCancellable);
+        alertDialog = dialogBuilder.create();
+        alertDialog.show();
     }
 
     public static void hideProgressBar() {
-        contentLoadingProgressBar.hide();
+        alertDialog.dismiss();
     }
 }

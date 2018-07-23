@@ -10,6 +10,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.android.vj.mvparchitecture.R;
+import com.android.vj.mvparchitecture.Utils.CommonUtil;
 import com.android.vj.mvparchitecture.adapter.RepoAdapter;
 import com.android.vj.mvparchitecture.model.entity.GitHubRepo;
 import com.android.vj.mvparchitecture.presenter.UserDetailsPresenter;
@@ -44,12 +45,12 @@ public class MainActivity extends AppCompatActivity implements UserDetailsView {
 
     @Override
     public void showLoading() {
-        //CommonUtil.showProgressBar(this);
+        CommonUtil.showProgressBar(this, false);
     }
 
     @Override
     public void hideLoading() {
-        //CommonUtil.hideProgressBar();
+        CommonUtil.hideProgressBar();
     }
 
     @Override

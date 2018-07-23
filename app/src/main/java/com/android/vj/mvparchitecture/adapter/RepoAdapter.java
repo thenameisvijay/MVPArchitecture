@@ -16,10 +16,11 @@ import java.util.List;
 public class RepoAdapter extends RecyclerView.Adapter<RepoAdapter.GitViewHolder> {
 
 
+    private Context context;
     private List<GitHubRepo> gitHubRepo;
 
     public RepoAdapter(Context context, List<GitHubRepo> gitHubRepo) {
-        Context context1 = context;
+        this.context = context;
         this.gitHubRepo = gitHubRepo;
     }
 
